@@ -36,6 +36,9 @@ function reducer(state, { type, payload }) {
         currentOperand: `${state.currentOperand || ""}${payload.digit}`,
       };
     case ACTIONS.DELETE_DIGIT:
+      if (state.currentOperand == null) {
+        return state;
+      }
       if (state.overwrite) {
         return {
           ...state,
