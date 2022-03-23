@@ -9,7 +9,17 @@ const ACTIONS = {
   CLEAR: "clear",
 };
 
-function reducer(state, { type, payload }) {}
+function reducer(state, { type, payload }) {
+  t;
+
+  switch (type) {
+    case ACTIONS.ADD_DIGIT:
+      return {
+        ...state,
+        currentOperand: `${currentOperand || ""}${payload.digit}`,
+      };
+  }
+}
 
 export function App() {
   const [{ previousOperand, currentOperand, operation }, dispatch] = useReducer(
