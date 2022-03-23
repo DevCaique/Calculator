@@ -14,6 +14,9 @@ export const ACTIONS = {
 function reducer(state, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
+      if ((payload.digit === ".") & (state.currentOperand == null)) {
+        return state;
+      }
       if (state.overwrite) {
         return {
           ...state,
@@ -140,12 +143,10 @@ export function App() {
             onClick={() => dispatch({ type: ACTIONS.CLEAR })}
             className="span-2"
           >
-            {" "}
-            AC{" "}
+            AC
           </button>
           <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>
-            {" "}
-            DEL{" "}
+            DEL
           </button>
           <OperationBtn operation="÷" dispatch={dispatch} />
           <DigitBtn digit="7" dispatch={dispatch} />
