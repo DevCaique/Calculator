@@ -34,7 +34,7 @@ h5 {
 
 .calculator button {
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.15rem;
   outline: none;
   border: 1px solid cyan;
   background-color: rgb(255 255 255);

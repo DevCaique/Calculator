@@ -24,12 +24,31 @@ function reducer(state, { type, payload }) {
       if (payload.digit === "0" && state.currentOperand === "0") {
         return state;
       }
+
       if (payload.digit === "." && state.currentOperand.includes(".")) {
         return state;
       }
       return {
         ...state,
         currentOperand: `${state.currentOperand || ""}${payload.digit}`,
+      };
+    case ACTIONS.DELETE_DIGIT:
+      if (state.overwrite) {
+        return {
+          ...state,
+          overwrite: false,
+          currentOperand: null,
+        };
+      }
+      if (state.currentOperand.lenght === 1) {
+        return {
+          ...state,
+          currentOperand: null,
+        };
+      }
+      return {
+        ...state,
+        currentOperand: state.currentOperand.slice(0, -1),
       };
     case ACTIONS.CHOOSE_OPERATION:
       if (state.currentOperand == null && state.previousOperand == null) {
@@ -58,9 +77,6 @@ function reducer(state, { type, payload }) {
         operation: payload.operation,
         currentOperand: null,
       };
-
-    case ACTIONS.CLEAR:
-      return {};
     case ACTIONS.EVALUATE:
       if (
         state.operation == null ||
@@ -77,6 +93,8 @@ function reducer(state, { type, payload }) {
         operation: null,
         currentOperand: evaluate(state),
       };
+    case ACTIONS.CLEAR:
+      return {};
   }
 }
 
@@ -125,7 +143,10 @@ export function App() {
             {" "}
             AC{" "}
           </button>
-          <button> DEL </button>
+          <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>
+            {" "}
+            DEL{" "}
+          </button>
           <OperationBtn operation="÷" dispatch={dispatch} />
           <DigitBtn digit="1" dispatch={dispatch} />
           <DigitBtn digit="2" dispatch={dispatch} />
