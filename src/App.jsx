@@ -1,7 +1,8 @@
 import { useReducer } from "react";
+import { DigitBtn } from "./DigitBtn";
 import "./App.css";
 
-const ACTIONS = {
+export const ACTIONS = {
   ADD_DIGIT: "add-digit",
   DELETE_DIGIT: "delete-digit",
   CHOOSE_OPERATION: "choose-operation",
@@ -10,13 +11,11 @@ const ACTIONS = {
 };
 
 function reducer(state, { type, payload }) {
-  t;
-
   switch (type) {
     case ACTIONS.ADD_DIGIT:
       return {
         ...state,
-        currentOperand: `${currentOperand || ""}${payload.digit}`,
+        currentOperand: `${state.currentOperand || ""}${payload.digit}`,
       };
   }
 }
@@ -39,21 +38,21 @@ export function App() {
         <div className="calculator-btn-area">
           <button className="span-2"> AC </button>
           <button> DEL </button>
-          <button> ÷ </button>
-          <button> 1 </button>
-          <button> 2 </button>
-          <button> 3 </button>
+          <DigitBtn digit="÷" dispatch={dispatch} />
+          <DigitBtn digit="1" dispatch={dispatch} />
+          <DigitBtn digit="2" dispatch={dispatch} />
+          <DigitBtn digit="3" dispatch={dispatch} />
           <button> * </button>
-          <button> 4 </button>
-          <button> 5 </button>
-          <button> 6 </button>
+          <DigitBtn digit="4" dispatch={dispatch} />
+          <DigitBtn digit="5" dispatch={dispatch} />
+          <DigitBtn digit="6" dispatch={dispatch} />
           <button> + </button>
-          <button> 7 </button>
-          <button> 8 </button>
-          <button> 9 </button>
+          <DigitBtn digit="7" dispatch={dispatch} />
+          <DigitBtn digit="8" dispatch={dispatch} />
+          <DigitBtn digit="9" dispatch={dispatch} />
           <button> - </button>
-          <button> . </button>
-          <button> 0 </button>
+          <DigitBtn digit="." dispatch={dispatch} />
+          <DigitBtn digit="0" dispatch={dispatch} />
           <button className="span-2"> = </button>
         </div>
       </div>
