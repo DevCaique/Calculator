@@ -40,8 +40,7 @@ h5 {
   background-color: rgb(255 255 255);
 }
 
-.calculator-btn-area button:hover,
-.calculator-btn-area button:focus {
+.calculator-btn-area button:hover {
   background-color: cyan;
 }
 
@@ -58,6 +57,7 @@ h5 {
   justify-content: space-around;
   word-wrap: break-word;
   word-break: break-all;
+  padding-inline: 1em;
 }
 
 .previous-operand {
