@@ -148,17 +148,17 @@ export function App() {
             DEL{" "}
           </button>
           <OperationBtn operation="÷" dispatch={dispatch} />
-          <DigitBtn digit="1" dispatch={dispatch} />
-          <DigitBtn digit="2" dispatch={dispatch} />
-          <DigitBtn digit="3" dispatch={dispatch} />
+          <DigitBtn digit="7" dispatch={dispatch} />
+          <DigitBtn digit="8" dispatch={dispatch} />
+          <DigitBtn digit="9" dispatch={dispatch} />
           <OperationBtn operation="*" dispatch={dispatch} />
           <DigitBtn digit="4" dispatch={dispatch} />
           <DigitBtn digit="5" dispatch={dispatch} />
           <DigitBtn digit="6" dispatch={dispatch} />
           <OperationBtn operation="+" dispatch={dispatch} />
-          <DigitBtn digit="7" dispatch={dispatch} />
-          <DigitBtn digit="8" dispatch={dispatch} />
-          <DigitBtn digit="9" dispatch={dispatch} />
+          <DigitBtn digit="1" dispatch={dispatch} />
+          <DigitBtn digit="2" dispatch={dispatch} />
+          <DigitBtn digit="3" dispatch={dispatch} />
           <OperationBtn operation="-" dispatch={dispatch} />
           <DigitBtn digit="." dispatch={dispatch} />
           <DigitBtn digit="0" dispatch={dispatch} />
