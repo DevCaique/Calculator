@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { DigitBtn } from "./DigitBtn";
+import { OperationBtn } from "./OperationBtn";
 import "./App.css";
 
 export const ACTIONS = {
@@ -13,10 +14,15 @@ export const ACTIONS = {
 function reducer(state, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
+      if (payload.digit === "0" && state.currentOperand === "0") return state;
+      if (payload.digit === "." && state.currentOperand.includes("."))
+        return state;
       return {
         ...state,
         currentOperand: `${state.currentOperand || ""}${payload.digit}`,
       };
+    case ACTIONS.CLEAR:
+      return {};
   }
 }
 
@@ -36,21 +42,27 @@ export function App() {
           <div className="current-operand">{currentOperand}</div>
         </div>
         <div className="calculator-btn-area">
-          <button className="span-2"> AC </button>
+          <button
+            onClick={() => dispatch({ type: ACTIONS.CLEAR })}
+            className="span-2"
+          >
+            {" "}
+            AC{" "}
+          </button>
           <button> DEL </button>
-          <DigitBtn digit="÷" dispatch={dispatch} />
+          <OperationBtn operation="÷" dispatch={dispatch} />
           <DigitBtn digit="1" dispatch={dispatch} />
           <DigitBtn digit="2" dispatch={dispatch} />
           <DigitBtn digit="3" dispatch={dispatch} />
-          <button> * </button>
+          <OperationBtn operation="*" dispatch={dispatch} />
           <DigitBtn digit="4" dispatch={dispatch} />
           <DigitBtn digit="5" dispatch={dispatch} />
           <DigitBtn digit="6" dispatch={dispatch} />
-          <button> + </button>
+          <OperationBtn operation="+" dispatch={dispatch} />
           <DigitBtn digit="7" dispatch={dispatch} />
           <DigitBtn digit="8" dispatch={dispatch} />
           <DigitBtn digit="9" dispatch={dispatch} />
-          <button> - </button>
+          <OperationBtn operation="-" dispatch={dispatch} />
           <DigitBtn digit="." dispatch={dispatch} />
           <DigitBtn digit="0" dispatch={dispatch} />
           <button className="span-2"> = </button>
